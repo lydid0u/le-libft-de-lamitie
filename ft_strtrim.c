@@ -44,7 +44,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		end;
 	char	*str;
 	int		i;
-	int		j;
 
 	len = ft_len(s1);
 	start = 0;
@@ -56,19 +55,17 @@ char	*ft_strtrim(char const *s1, char const *set)
 	str = malloc(end - start + 2);
 	if (str == NULL || s1 == NULL || set == NULL)
 		return (NULL);
-	i = start;
-	j = 0;
-	while (i <= end)
-		str[j++] = s1[i++];
-	str[j] = '\0';
+	i = 0;
+	while (start <= end)
+		str[i++] = s1[start++];
+	str[i] = '\0';
 	return (str);
 }
 
-//int main()
-//{
-//	char const a[] = "   test   ";
-//	char const b[] = " ";
-//
-//	printf("'%s'\n", ft_strtrim(a, b));
-//}
-//
+/*int main()
+{
+	char const a[] = "   test   ";
+	char const b[] = " ";
+
+	printf("'%s'\n", ft_strtrim(a, b));
+}*/

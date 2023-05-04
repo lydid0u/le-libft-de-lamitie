@@ -48,20 +48,16 @@ char	*ft_itoa(int nb)
 	long int	n;
 	int			len;
 	char		*str;
-	int			digit;
 
-	str = malloc(sizeof(char) * len + 1);
-	len = count_len(n);
 	n = nb;
+	len = count_len(n);
+	str = malloc(sizeof(char) * len + 1);
 	if (str == NULL)
 		return (NULL);
 	str[len] = '\0';
 	len = len -1;
 	if (n == 0)
-	{
 		str[0] = '0';
-		return (str);
-	}
 	else if (n < 0)
 	{
 		str[0] = '-';
@@ -69,48 +65,49 @@ char	*ft_itoa(int nb)
 	}
 	while (n != 0)
 	{
-		digit = n % 10;
-		str[len] = digit + '0';
-		n /= 10;
-		len--;
+		str[len--] = n % 10 + '0';
+		n = n / 10;
 	}
 	return (str);
 }
-// int main()
-// {
-//    int a = -2147483648;
-//    printf("%s\n", ft_itoa(a));
-//    printf("%s\n", ft_itoa(123));
-//    printf("%s\n", ft_itoa(-123));
-//    printf("%s\n", ft_itoa(0));
-//    printf("%s\n", ft_itoa(3434534));
-//    printf("%s\n", ft_itoa(-454));
-//    printf("%s\n", ft_itoa(43343));
-//    ft_itoa(-214740648);
-//    // DANS LE CAS 654
-//    len = 3
-//    jfais un malloc de 3 + 1
-//    str[len] = '\0' c pareil que str[3]
-// 	len - 1; (len =2)
-// 	str[len] = 4 soit le dernier caratere 
-// 	len -1;(len =1)
-// 	str[len] = 5
-// 	len -1;(len =0)
-// 	str[len] = 6
-//    */
-//      // DANS LE CAS -654
-//    /*
-//    len = 4
-//    jfais un malloc de len + 1
-//    str[len] = '\0' c pareil que str[4]
-//    //str[0] = '-'
-// 	len - 1; (len =3)
-// 	str[len] = 4 soit le dernier caratere 
-// 	len -1;(len =2)
-// 	str[len] = 5
-// 	len -1;(len =1)
-// 	str[len] = 6
+/*
+int main()
+{
+   int a = -2147483648;
+   // printf("%s\n", ft_itoa(a));
 
-// 	du coup tarrete la copie a str[1]
-//    */
-// }
+	// printf("%s\n", ft_itoa(123));
+   printf("%s\n", ft_itoa(-123));
+   // printf("%s\n", ft_itoa(0));
+   // printf("%s\n", ft_itoa(3434534));
+   // printf("%s\n", ft_itoa(-454));
+   // printf("%s\n", ft_itoa(43343));
+
+   ft_itoa(-214740648);
+}
+*/
+/*
+	DANS LE CAS 654
+   len = 3;
+   jfais un malloc de 3 + 1
+   str[len] = '\0' c pareil que str[3]
+	len - 1; (len =2)
+	str[len] = 4 soit le dernier caratere 
+	len -1;(len =1)
+	str[len] = 5
+	len -1;(len =0)
+	str[len] = 6
+   
+     DANS LE CAS -654
+   len = 4
+   jfais un malloc de len + 1
+   str[len] = '\0' c pareil que str[4]
+   //str[0] = '-'
+	len - 1; (len =3)
+	str[len] = 4 soit le dernier caratere 
+	len -1;(len =2)
+	str[len] = 5
+	len -1;(len =1)
+	str[len] =
+	du coup tarrete la copie a str[1]
+*/
