@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adzinabi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 18:23:40 by adzinabi          #+#    #+#             */
-/*   Updated: 2023/05/03 18:23:40 by adzinabi         ###   ########.fr       */
+/*   Created: 2023/05/03 18:07:51 by adzinabi          #+#    #+#             */
+/*   Updated: 2023/05/03 18:13:37 by adzinabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stddef.h>
+#include <stdlib.h>
 
-#include "includes/libft.h"
-//#include <ctype.h>
-//#include <stdio.h>
-
-int	ft_isprint(int c)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	if (c >= 32 && c <= 126)
-	{
-		return (1);
-	}
-	return (0);
-}
+	char	*ptr;
+	size_t	nmemb_size;
+	size_t	i;
 
-//int main(void)
-//{
-//	printf("%d\n", ft_isprint('4'));
-//	printf("%d\n", isprint('4'));
-//}
+	nmemb_size = nmemb * size;
+	i = 0;
+	if (nmemb == 0 || size == 0 || nmemb != nmemb_size / size)
+		return (NULL);
+	ptr = malloc(nmemb_size);
+	while (nmemb_size > i)
+		ptr[i++] = 0;
+	return (ptr);
+}

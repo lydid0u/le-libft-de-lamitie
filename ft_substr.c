@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adzinabi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 18:23:40 by adzinabi          #+#    #+#             */
-/*   Updated: 2023/05/03 18:23:40 by adzinabi         ###   ########.fr       */
+/*   Created: 2023/05/04 14:20:59 by adzinabi          #+#    #+#             */
+/*   Updated: 2023/05/04 14:20:59 by adzinabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
-//#include <ctype.h>
-//#include <stdio.h>
 
-int	ft_isprint(int c)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	if (c >= 32 && c <= 126)
-	{
-		return (1);
-	}
-	return (0);
-}
+	size_t	i;
+	char	*str;
 
-//int main(void)
-//{
-//	printf("%d\n", ft_isprint('4'));
-//	printf("%d\n", isprint('4'));
-//}
+	str = malloc((len + 1) * sizeof(char));
+	if (s == NULL || str == NULL)
+		return (NULL);
+	i = 0;
+	while (i < len && s[start + i] != '\0')
+	{
+		str[i] = s[start + i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+	free(str);
+}

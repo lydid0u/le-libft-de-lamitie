@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adzinabi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 18:23:40 by adzinabi          #+#    #+#             */
-/*   Updated: 2023/05/03 18:23:40 by adzinabi         ###   ########.fr       */
+/*   Created: 2023/05/04 14:13:28 by adzinabi          #+#    #+#             */
+/*   Updated: 2023/05/04 14:13:28 by adzinabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "includes/libft.h"
-//#include <ctype.h>
-//#include <stdio.h>
+#include <string.h>
 
-int	ft_isprint(int c)
+char	*ft_strrchr(const char *s, int c)
 {
-	if (c >= 32 && c <= 126)
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	while (i >= 0)
 	{
-		return (1);
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i--;
 	}
 	return (0);
 }
 
-//int main(void)
+//int main()
 //{
-//	printf("%d\n", ft_isprint('4'));
-//	printf("%d\n", isprint('4'));
+//	char str[] = "tripouille";
+//
+//	printf("%p\n", ft_strrchr(str, 't' + 256));
+//	printf("%p\n", strrchr(str, 't' + 256));
+//
+//	 printf("%p\n", ft_strrchr(str, 't'));
+//	printf("%p\n", strrchr(str, 't'));
 //}

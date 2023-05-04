@@ -1,30 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adzinabi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 18:23:40 by adzinabi          #+#    #+#             */
-/*   Updated: 2023/05/03 18:23:40 by adzinabi         ###   ########.fr       */
+/*   Created: 2023/05/04 14:05:32 by adzinabi          #+#    #+#             */
+/*   Updated: 2023/05/04 14:05:32 by adzinabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
-//#include <ctype.h>
-//#include <stdio.h>
 
-int	ft_isprint(int c)
+int	ft_len(const char *str)
 {
-	if (c >= 32 && c <= 126)
+	int	i;
+
+	i = 0;
+	while (str[i])
 	{
-		return (1);
+		i++;
 	}
-	return (0);
+	return (i);
 }
 
-//int main(void)
-//{
-//	printf("%d\n", ft_isprint('4'));
-//	printf("%d\n", isprint('4'));
-//}
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	int				len;
+	char			*str;
+	unsigned int	i;
+
+	len = ft_len(s);
+	i = 0;
+	str = (char *)malloc(len + 1);
+	if (!s || !f || !str)
+		return (NULL);
+	while (s[i])
+	{
+		str[i] = (*f)(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}

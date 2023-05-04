@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adzinabi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 18:23:40 by adzinabi          #+#    #+#             */
-/*   Updated: 2023/05/03 18:23:40 by adzinabi         ###   ########.fr       */
+/*   Created: 2023/05/03 18:27:40 by adzinabi          #+#    #+#             */
+/*   Updated: 2023/05/03 18:27:40 by adzinabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
-//#include <ctype.h>
 //#include <stdio.h>
+//#include <string.h>
+#include "includes/libft.h"
 
-int	ft_isprint(int c)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	if (c >= 32 && c <= 126)
+	size_t				i;
+	const unsigned char	*str;
+
+	str = (const unsigned char *) s;
+	i = 0;
+	while (i < n)
 	{
-		return (1);
+		if (str[i] == (unsigned char)c)
+		{
+			return ((void *) &str[i]);
+		}
+		i++;
 	}
 	return (0);
 }
 
-//int main(void)
-//{
-//	printf("%d\n", ft_isprint('4'));
-//	printf("%d\n", isprint('4'));
+//int main() {
+//	printf("%p\n", memchr("wshd", 'd', 4));  
+//	printf("%p\n", ft_memchr("wshd", 'd', 4));  
+//	return 0;
 //}

@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adzinabi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 18:23:40 by adzinabi          #+#    #+#             */
-/*   Updated: 2023/05/03 18:23:40 by adzinabi         ###   ########.fr       */
+/*   Created: 2023/05/03 18:22:02 by adzinabi          #+#    #+#             */
+/*   Updated: 2023/05/03 18:22:02 by adzinabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
 //#include <ctype.h>
 //#include <stdio.h>
+#include "includes/libft.h"
 
-int	ft_isprint(int c)
+int	ft_isalpha(int c)
 {
-	if (c >= 32 && c <= 126)
-	{
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
 		return (1);
-	}
-	return (0);
+	else
+		return (0);
 }
 
-//int main(void)
-//{
-//	printf("%d\n", ft_isprint('4'));
-//	printf("%d\n", isprint('4'));
-//}
+// ATTENTION ISALPHA RENVOIE 2 QND C UNE MINUSCULE MAIS SUR GITHUB 
+// LES GENS METTENT LES 2 CAS DANS LE RETURN 1 DONC A CHECKER
+/*int main()
+{
+    unsigned char myChar = 's';
+    printf("%d\n", ft_isalpha((int) myChar));
+    printf("%d", isalpha((int) myChar));
+}*/
