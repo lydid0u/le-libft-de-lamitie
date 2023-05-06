@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int	ft_len(const char *str)
+static int	ft_len(const char *str)
 {
 	int	i;
 
@@ -45,6 +45,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*str;
 	int		i;
 
+	if (s1 == NULL || set == NULL)
+		return (NULL);
 	len = ft_len(s1);
 	start = 0;
 	end = len - 1;
@@ -52,8 +54,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 		start++;
 	while (end >= 0 && ft_ischarinset(s1[end], set))
 		end--;
-	str = malloc(end - start + 2);
-	if (str == NULL || s1 == NULL || set == NULL)
+	if (start > end)
+		str = malloc(sizeof(char));
+	else
+		str = malloc(end - start + 2);
+	if (str == NULL)
 		return (NULL);
 	i = 0;
 	while (start <= end)
@@ -61,7 +66,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	str[i] = '\0';
 	return (str);
 }
-
 /*int main()
 {
 	char const a[] = "   test   ";

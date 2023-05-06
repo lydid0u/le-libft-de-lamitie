@@ -21,6 +21,8 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 
 	i = 0;
 	j = 0;
+	if (size == 0)
+		return (0);
 	while (dest[i] && i < size)
 		i++;
 	while (src[j] && i + j + 1 < size)

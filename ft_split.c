@@ -57,7 +57,47 @@ char	*copystr(const char *original, char c)
 	return (copy);
 }
 
-char	**ft_split(char const *s, char c)
+char **ft_fill_tab(char const *s, char c, char **tab, int len_tab)
+{
+	int i = 0;
+
+while (i != len_tab)
+	{
+		while (*s != '\0' && *s == c)
+			s++;
+		tab[i] = copystr(s, c);
+		if (!tab[i])
+		{
+			i--;
+			while (i >= 0)
+				free(tab[i--]);
+			return (NULL);
+		}
+		while (*s != '\0' && *s != c)
+			s++;
+		i++;
+	}
+	tab[i] = NULL;
+	return (tab);
+}
+
+char    **ft_split(char const *s, char c)
+{
+    int        len_tab;
+    char    **tab;
+
+    len_tab = countword(s, c);
+    if (!s)
+        return (NULL);
+    tab = malloc (sizeof(char *) * (len_tab + 1));
+    if (!tab)
+        return (NULL);
+    
+    return (ft_fill_tab(s, c, tab, len_tab));
+}
+
+
+/*char	**ft_split(char const *s, char c)
 {
 	int		len_tab;
 	int		i;
@@ -74,7 +114,7 @@ char	**ft_split(char const *s, char c)
 	{
 		while (*s != '\0' && *s == c)
 			s++;
-		tab[i] = copyStr(s, c);
+		tab[i] = copystr(s, c);
 		if (!tab[i])
 		{
 			i--;
@@ -88,7 +128,7 @@ char	**ft_split(char const *s, char c)
 	}
 	tab[i] = NULL;
 	return (tab);
-}
+}*/
 
 /*
 char* = taille d'uen adresse de char
