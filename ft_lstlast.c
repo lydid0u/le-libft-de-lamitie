@@ -9,7 +9,6 @@
 /*   Updated: 2023/05/04 14:22:48 by adzinabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "includes/libft.h"
 
 t_list	*ft_lstlast(t_list *lst)
